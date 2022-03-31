@@ -20,7 +20,7 @@ function NFTDropPage() {
                 <div className='bg-gradient-to-br from-yellow-400 to-purple-600 p-2 rounded-xl'>
                     <img 
                         className='object-cover w-44 rounded-xl lg:h-96 lg:w-72'
-                        src="https://links.papareact.com/8sg" 
+                        src="/nftpanda.png" 
                         alt="Ape" 
                     />
                 </div>
@@ -40,7 +40,7 @@ function NFTDropPage() {
             {/* Header */}
 
             <header className='flex items-center justify-between'>
-                <h1 className='w-52 cursor-pointer font-extralight sm:w-80 text-xl'>The <span className='font-extrabold underline decoration-pink-600/50'>Aloogang</span> NFT Market Place</h1>
+                <a href='/'><h1 className='w-52 cursor-pointer font-extralight sm:w-80 text-xl'>The <span className='font-extrabold underline decoration-pink-600/50'>Aloogang</span> NFT Market Place</h1></a>
                 <button onClick={()=> {address? disconnect() : connectWithMetamask()}} className='rounded-full bg-rose-400 text-white px-4 py-2 text-xs lg:px-5 lg:py-3 lg:text-base'>
                     {!address?"Sign in":"Sign Out"}
                 </button>
@@ -52,7 +52,7 @@ function NFTDropPage() {
             <div className='mt-10 flex flex-1 flex-col items-center space-y-6 text-center lg:space-y-0 lg:justify-center'>
                 <img 
                     className='w-80 object-cover pb-10 lg:h-40'
-                    src="https://links.papareact.com/bdy" 
+                    src="/pandanft.jpg" 
                     alt="" 
                 />
                 <h1 className='text-3xl font-bold lg:text-5xl lg:font-extrabold'>
