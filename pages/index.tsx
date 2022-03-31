@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <div className="">
       <Head>
-        <title>Aloo NFT Drop</title>
+        <title>aloo NFT Drop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <a href="./nft/aloogangxpapafam">

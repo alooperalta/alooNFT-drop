@@ -12,7 +12,7 @@ function NFTDropPage() {
   return (
     <div className='flex h-screen flex-col lg:grid lg:grid-cols-10'>
         <Head>
-            <title>Aloo NFT Drop</title>
+            <title>aloo NFT Drop</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className='lg:col-span-4 bg-gradient-to-br from-cyan-500 to-rose-500'> {/* Left Side */}
