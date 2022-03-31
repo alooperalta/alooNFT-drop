@@ -9,7 +9,9 @@ const Home: NextPage = () => {
         <title>Aloo NFT Drop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className='text-red-500 text-4xl font-bold'>Hey</h1>
+      <a href="./nft/aloogangxpapafam">
+        <h1 className='text-rose-400 text-4xl font-bold'>Hey Sonny, click on this text to go to the NFT Drop page :)</h1>
+      </a>
     </div>
   )
 }
