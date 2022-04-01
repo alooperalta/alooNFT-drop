@@ -1,8 +1,14 @@
 import Head from 'next/head'
 import React from 'react'
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
+import { sanityClient, urlFor } from '../../sanity';
+import type { GetServerSideProps, NextPage } from 'next'
+import { Collection } from '../../typings';
 
-function NFTDropPage() {
+interface Props {
+    collection: Collection
+}
+function NFTDropPage({ collection }: Props) {
 
     //Auth 
     const connectWithMetamask = useMetamask();
@@ -20,7 +26,7 @@ function NFTDropPage() {
                 <div className='bg-gradient-to-br from-yellow-400 to-purple-600 p-2 rounded-xl'>
                     <img 
                         className='object-cover w-44 rounded-xl lg:h-96 lg:w-72'
-                        src="/nftpanda.png" 
+                        src={urlFor(collection.previewImage).url()}
                         alt="Ape" 
                     />
                 </div>
@@ -52,11 +58,11 @@ function NFTDropPage() {
             <div className='mt-10 flex flex-1 flex-col items-center space-y-6 text-center lg:space-y-0 lg:justify-center'>
                 <img 
                     className='w-80 object-cover pb-10 lg:h-40'
-                    src="/pandanft.jpg" 
+                    src={urlFor(collection.mainImage).url()} 
                     alt="" 
                 />
                 <h1 className='text-3xl font-bold lg:text-5xl lg:font-extrabold'>
-                    The Aloogang Ape Coding Club | NFT Drop
+                    {collection.title}
                 </h1>
                 <p className='pt-2 text-xl text-green-500'>
                     13 / 21 NFT's claimed
@@ -72,3 +78,43 @@ function NFTDropPage() {
 }
 
 export default NFTDropPage
+
+export const getServerSideProps: GetServerSideProps = async ({params}) => {
+    const query = `*[_type == "collection" && slug.current == $id][0]{
+        _id,
+        title,
+        address,
+        description,
+        nftCollectionName,
+        mainImage{
+            asset
+        },
+        previewImage{
+            asset
+        },
+        slug{
+            current
+        },
+        creator-> {
+            _id,
+            name,
+            address,
+            slug{
+                current
+            },
+        },
+    }`
+
+    const collection = await sanityClient.fetch(query, {id: params?.id});
+
+    if(!collection) {
+        return {
+            notFound: true,
+        }
+    }
+    return {
+        props: {
+            collection,
+        }
+    }
+}
