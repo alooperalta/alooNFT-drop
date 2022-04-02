@@ -25,7 +25,7 @@ const Home = ({collections}: props) => {
             <div className='grid px-20 space-x-10 mx-auto md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
               {collections.map(collection => (<Link href={`/nft/${collection.slug.current}`}><div> <div className='bg-gradient-to-br from-yellow-400 to-purple-600 p-2 rounded-xl'>
                     <img 
-                        className='object-cover rounded-xl lg:h-96'
+                        className='object-cover w-full rounded-xl lg:h-96'
                         src={urlFor(collection.mainImage).url()}
                         alt="Ape" 
                     />
